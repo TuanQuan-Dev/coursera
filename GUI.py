@@ -60,9 +60,9 @@ def Contentbased():
         st.table(gensim.recomment(text, 5))
 
     with tab2:
-        cosine = MyCosine()
-        st.table(cosine.recomment(text, 5))
-        
+        #cosine = MyCosine()
+        #st.table(cosine.recomment(text, 5))
+        pass 
                
     
 
