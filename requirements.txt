@@ -8,10 +8,9 @@ squarify
 findspark
 gensim
 nltk
-scipy
+scipyv=1.11
 plotly.express
 Gensim
-Cosine
 streamlit_option_menu
 sklearn.feature_extraction.text
 sklearn.metrics.pairwise
