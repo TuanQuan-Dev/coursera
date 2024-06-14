@@ -7,5 +7,6 @@ scikit-learn
 squarify
 findspark
 gensim
-streamlit
 nltk
+scipy
+plotly.express
