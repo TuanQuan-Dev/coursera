@@ -11,3 +11,5 @@ nltk
 scipy
 plotly.express
 Gensim
+Cosine
+option_menu
