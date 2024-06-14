@@ -13,4 +13,3 @@ plotly.express
 Gensim
 streamlit_option_menu
 scikit-learn
-Cosine
