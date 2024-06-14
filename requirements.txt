@@ -8,4 +8,3 @@ squarify
 findspark
 gensim
 streamlit
-process_NLP
