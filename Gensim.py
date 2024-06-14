@@ -21,7 +21,7 @@ class MyGensim:
         
 
     def load(self):
-        self._dfCourse = pd.read_csv("input_data/Courses.csv")
+        self._dfCourse = pd.read_csv("input_data/courses.csv")
         self._dfCourse =  self._dfCourse.fillna({ "Level": "All", "Unit" : "Unknown", "Results": ""})
         self._dfCourse["Results"] =  self._dfCourse.apply(lambda r: r["Results"] if r["Results"] != "" else r["CourseName"], axis=1)
         
