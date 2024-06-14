@@ -8,3 +8,4 @@ squarify
 findspark
 gensim
 streamlit
+nltk
