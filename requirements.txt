@@ -10,3 +10,4 @@ gensim
 nltk
 scipy
 plotly.express
+Gensim
