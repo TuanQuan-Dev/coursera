@@ -1,0 +1,11 @@
+streamlit
+numpy
+pandas
+matplotlib
+seaborn
+scikit-learn
+squarify
+findspark
+gensim
+streamlit
+process_NLP
