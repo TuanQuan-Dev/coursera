@@ -1,4 +1,3 @@
-from pickle import NONE
 import pandas as pd
 import numpy as np
 from gensim import corpora, models, similarities
@@ -8,18 +7,18 @@ from process_NLP import NLP
 class MyGensim:
     
     def __init__(self):
-        self._dfCourse = NONE    
+        self._dfCourse = None    
 
-        self._tfidf = NONE
-        self._index = NONE
-        self._dictionary = NONE        
+        self._tfidf = None
+        self._index = None
+        self._dictionary = None        
 
         self._nlp = NLP()        
 
         self.load()
         pass
         
-
+# đọc dữ liệu, chuẩn bị dữ liệu
     def load(self):
         self._dfCourse = pd.read_csv("input_data/courses.csv")
         self._dfCourse =  self._dfCourse.fillna({ "Level": "All", "Unit" : "Unknown", "Results": ""})
@@ -36,8 +35,9 @@ class MyGensim:
         
         self._tfidf = models.TfidfModel(corpus)
         self._index = similarities.SparseMatrixSimilarity(self._tfidf[corpus], num_features = feature_cnt)
-       
-    def recomment(self, text):
+
+# đọc dữ liệu, chuẩn bị dữ liệu       
+    def recomment(self, text, n):
         if (text == ""):
             return pd.DataFrame()
         
@@ -52,7 +52,7 @@ class MyGensim:
         data = sorted(data, key=lambda x: x[1], reverse=True)
         
         indexes = []
-        for i, score in data[0:10]:
+        for i, score in data[0:n]:
             indexes.append(i)
 
-        return self._dfCourse.iloc[indexes][["CourseID", "Unit", "ReviewNumber", "AvgStar", "Level", "Results"]]
+        return self._dfCourse.iloc[indexes][["CourseID", "Unit", "ReviewNumber", "AvgStar", "Level", "Results"]].reset_index(drop=True)
