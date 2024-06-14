@@ -12,4 +12,6 @@ scipy
 plotly.express
 Gensim
 Cosine
-option_menu
+streamlit_option_menu
+sklearn.feature_extraction.text
+sklearn.metrics.pairwise
