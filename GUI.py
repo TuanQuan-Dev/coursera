@@ -60,8 +60,8 @@ def Contentbased():
         st.table(gensim.recomment(text, 5))
 
     with tab2:
-        #cosine = MyCosine()
-        #st.table(cosine.recomment(text, 5))
+        cosine = MyCosine()
+        st.table(cosine.recomment(text, 5))
         pass 
                
     
@@ -76,17 +76,18 @@ elif choice.lower() == 'content-based':
     
 
 elif choice.lower() == "collaborative":
-    st.subheader("1. Text")
-    name = st.text_input("Enter your name")
-    st.write(f"Your name is {name}")
+    # st.subheader("1. Text")
+    # name = st.text_input("Enter your name")
+    # st.write(f"Your name is {name}")
     
-    data = {'Name': ['Tom', 'nick', 'krish', 'jack'],
-        'Age': [20, 21, 19, 18]}
+    # data = {'Name': ['Tom', 'nick', 'krish', 'jack'],
+    #     'Age': [20, 21, 19, 18]}
  
-    # Create DataFrame
-    df = pd.DataFrame(data)
-    for idx, row in df.iterrows():
-        st.write(row["Name"])
+    # # Create DataFrame
+    # df = pd.DataFrame(data)
+    # for idx, row in df.iterrows():
+    #     st.write(row["Name"])
+    pass
 
 
 
