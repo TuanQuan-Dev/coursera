@@ -1,6 +1,6 @@
 import pandas as pd
 import numpy as np
-from surprise import Reader, Dataset, BaselineOnly
+from surprise import SVD, Reader, Dataset, BaselineOnly
 
 
 class MySurprise():
@@ -25,18 +25,18 @@ class MySurprise():
 
         self._dfCourse_indexed = self._df[["CourseNumberId", "CourseName"]].drop_duplicates()
         
-        self._model = BaselineOnly()
+        self._model = SVD()
         trainset = data.build_full_trainset()
         self._model.fit(trainset)
 
     def recomment(self, userid):
         dfUser = self._df[(self._df["UserIdNumber"] == userid) & (self._df["RatingStar"] >=3)]
-        dfUser = dfUser.set_index('CourseNumberId')
+        dfUser = dfUser.set_index("CourseNumberId")
         
         df_score = self._df[["CourseNumberId"]]
         df_score['EstimateScore'] = df_score['CourseNumberId'].apply(lambda x: self._model.predict(userid, x).est) # est: get EstimateScore
-        df_score = df_score.drop_duplicates()
-        df_score = df_score.sort_values(by=['EstimateScore'], ascending=False)        
+        df_score = df_score.sort_values(by=['EstimateScore'], ascending=False)  
+        df_score = df_score.drop_duplicates()              
 
         dfResult = pd.merge(df_score, self._dfCourse_indexed, left_on="CourseNumberId", right_on="CourseNumberId", how="inner")
         dfResult = pd.merge(dfResult, self._dfCourse, left_on="CourseName", right_on="CourseName", how="inner")

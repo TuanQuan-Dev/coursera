@@ -39,7 +39,7 @@ def homepage():
              In this system, we use two groups of algorithms:
              <ul>
                 <li>Content-based filtering: Gensim, Cosine</li>
-                <li>Collaborative filtering: Surprise (BaselineOnly)</li>
+                <li>Collaborative filtering: Surprise (SVD)</li>
              </ul>
              </div>""", unsafe_allow_html=True)    
 
@@ -84,6 +84,7 @@ def Collaborative():
         return
     
     #st.table(als.recomment(text))
+    st.write("""<br/><div style="font-size:1.2em">Recommended Courses for you</div>""", unsafe_allow_html=True);
     st.table(mysurprise.recomment(text))
 
 
