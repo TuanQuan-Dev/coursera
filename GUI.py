@@ -4,10 +4,17 @@ import streamlit as st
 from process_NLP import NLP
 from Gensim import MyGensim
 from Cosine import MyCosine
+from ALS import MyALS
 from streamlit_option_menu import option_menu
 
 #streamlit run gui.py
-# Ghi chú
+#Ghi chú
+
+
+gensim = MyGensim()
+cosine = MyCosine()
+als = MyALS()
+
 
 st.title("BUILDING RECOMMENDER SYSTEMS")
 st.write("")
@@ -54,16 +61,21 @@ def Contentbased():
     
     tab1, tab2 = st.tabs(["Gensim", "Cosine"])
 
-    with tab1:
-               
-        gensim = MyGensim()
+    with tab1:                       
         st.table(gensim.recomment(text, 5))
 
-    with tab2:
-        cosine = MyCosine()
+    with tab2:        
         st.table(cosine.recomment(text, 5))
-        pass 
+        
                
+#----------------------------------------------------------------------------------
+def Collaborative():
+    st.header("COLLABORATIVE FILTERING")
+    
+    st.write("<br/><br/>", unsafe_allow_html=True);
+    text = st.text_input("Enter userid:")
+        
+    st.table(als.recomment(text))
     
 
 
@@ -76,17 +88,7 @@ elif choice.lower() == 'content-based':
     
 
 elif choice.lower() == "collaborative":
-    # st.subheader("1. Text")
-    # name = st.text_input("Enter your name")
-    # st.write(f"Your name is {name}")
-    
-    # data = {'Name': ['Tom', 'nick', 'krish', 'jack'],
-    #     'Age': [20, 21, 19, 18]}
- 
-    # # Create DataFrame
-    # df = pd.DataFrame(data)
-    # for idx, row in df.iterrows():
-    #     st.write(row["Name"])
+    Collaborative()
     pass
 
 
