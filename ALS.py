@@ -21,7 +21,8 @@ class MyALS():
         pass
 
     def load(self):
-        spark = SparkSession.builder.appName("GUI").getOrCreate()
+        #spark = SparkSession.builder.appName("GUI").getOrCreate()
+        spark = SparkSession(SparkContext())
 
         self._dfCourse = spark.read.csv("input_data/courses.csv", header=True, inferSchema=True)
         df = spark.read.csv("input_data/reviews.csv", header=True, inferSchema=True)
