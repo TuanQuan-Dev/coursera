@@ -14,3 +14,4 @@ Gensim
 streamlit_option_menu
 scikit-learn
 pyspark
+surprise

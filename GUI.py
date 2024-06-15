@@ -5,6 +5,7 @@ from process_NLP import NLP
 from Gensim import MyGensim
 from Cosine import MyCosine
 from ALS import MyALS
+from Surprise import MySurprise
 from streamlit_option_menu import option_menu
 
 #streamlit run gui.py
@@ -13,7 +14,8 @@ from streamlit_option_menu import option_menu
 
 gensim = MyGensim()
 cosine = MyCosine()
-als = MyALS()
+#als = MyALS()
+mysurprise = MySurprise()
 
 
 st.title("BUILDING RECOMMENDER SYSTEMS")
@@ -75,8 +77,8 @@ def Collaborative():
     st.write("<br/><br/>", unsafe_allow_html=True);
     text = st.text_input("Enter userid:")
         
-    st.table(als.recomment(text))
-    
+    #st.table(als.recomment(text))
+    st.table(mysurprise.recomment(text))
 
 
 #----------------------------------------------------------------------------------
