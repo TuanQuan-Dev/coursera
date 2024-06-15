@@ -39,7 +39,7 @@ def homepage():
              In this system, we use two groups of algorithms:
              <ul>
                 <li>Content-based filtering: Gensim, Cosine</li>
-                <li>Collaborative filtering: Surprise (SVD)</li>
+                <li>Collaborative filtering: Surprise (BaselineOnly)</li>
              </ul>
              </div>""", unsafe_allow_html=True)    
 
@@ -59,9 +59,12 @@ def homepage():
 #----------------------------------------------------------------------------------
 def Contentbased():
     st.header("CONTENT-BASED FILTERING")    
-    text = st.text_input("What do you want to learn:")
-    
+    text = st.text_input("What do you want to learn:")    
+
     tab1, tab2 = st.tabs(["Gensim", "Cosine"])
+        
+    if (text == ""):
+        return
 
     with tab1:                       
         st.table(gensim.recomment(text, 5))
@@ -76,7 +79,10 @@ def Collaborative():
     
     st.write("<br/><br/>", unsafe_allow_html=True);
     text = st.text_input("Enter userid:")
-        
+    
+    if (text == ""):
+        return
+    
     #st.table(als.recomment(text))
     st.table(mysurprise.recomment(text))
 
