@@ -42,8 +42,8 @@ class MyCosine:
 
 # gợi ý khóa học theo text nhập
     def recomment(self, text, n):
-        if (text == ""):
-            return pd.DataFrame()
+        # if (text == ""):
+        #     return pd.DataFrame()
         
         text = self._nlp.clean(text)
         vectorizer_matrix_test = self._vectorizer.transform([text])
